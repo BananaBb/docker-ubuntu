@@ -2,7 +2,7 @@ FROM bananabb/ubuntu-base:base.2.0.0
 MAINTAINER BananaBb
 
 # Install Node.js
-RUN sudo apt-get update 
+RUN sudo apt-get update \
  && sudo apt-get install -y \
   	nodejs \ 
   	npm  \
