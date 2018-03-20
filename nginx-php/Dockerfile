@@ -22,6 +22,7 @@ RUN sudo apt-get update \
     php-xdebug \ 
     php-pear \ 
     php-dev \ 
+    php7.0-soap \ 
  && pecl install mongodb
 
 # Build Folder
