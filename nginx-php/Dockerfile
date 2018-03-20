@@ -1,9 +1,8 @@
-FROM bananabb/ubuntu-base:base.1.0.0
+FROM bananabb/ubuntu-base:base.2.0.0
 MAINTAINER BananaBb
 
 # Install nginx & packages & php
 RUN sudo apt-get update \
- && echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \ 
  && sudo apt-get install -y \
     nginx \ 
     supervisor \ 
@@ -11,32 +10,32 @@ RUN sudo apt-get update \
     libpcre3-dev \ 
     python-software-properties \ 
     software-properties-common \
-    php5-fpm \ 
-    php5-mysql \ 
-    php5-mcrypt \ 
-    php5-gd \ 
-    php5-memcached \ 
-    php5-curl \ 
-    php5-xdebug \ 
+    php-fpm \ 
+    php-mysql \ 
+    php-mcrypt \ 
+    php-gd \ 
+    php-memcached \ 
+    php-curl \ 
+    php-mbstring \ 
+    php-zip \ 
+    php-opcache \ 
+    php-xdebug \ 
     php-pear \ 
-    php5-dev \ 
+    php-dev \ 
  && pecl install mongodb
 
 # Build Folder
 RUN mkdir -p /var/www/public \ 
   /var/log/supervisor \ 
   /etc/nginx \ 
-  /var/run/php5-fpm \ 
-  /etc/php5/conf.d
+  /var/run/php-fpm \ 
+  /etc/php/conf.d
 
 # Setup File
-RUN ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/conf.d/mcrypt.ini \
- && php5enmod mcrypt \
- && sudo rm /etc/nginx/sites-available/default \
+RUN sudo rm /etc/nginx/sites-available/default \
  && sudo cp /usr/share/nginx/html/index.html /var/www/public/ \
- && echo "<?php phpinfo();?>" >> /var/www/public/info.php \ 
- && echo "extension=mongodb.so" >> /etc/php5/fpm/php.ini \ 
- && echo "extension=mongodb.so" >> /etc/php5/cli/php.ini
+ && echo "extension=mongodb.so" >> /etc/php/7.0/fpm/php.ini \ 
+ && echo "extension=mongodb.so" >> /etc/php/7.0/cli/php.ini
 
 # File setting
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
