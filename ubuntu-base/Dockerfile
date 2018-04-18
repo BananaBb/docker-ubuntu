@@ -15,6 +15,7 @@ RUN apt-get update  \
   	curl \ 
   	git \ 
   	nano \ 
-  	vim
+  	vim \ 
+  	htop
 
 CMD ["/bin/bash"]
