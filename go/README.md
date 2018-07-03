@@ -1,9 +1,9 @@
 # ubuntu-go
 
-This repository contains Dockerfile is include go, node.js, npm, nvm & pm2
+This repository contains Dockerfile is include go, pmgo & dep
 
 ## Getting Started
-These instructions will get you to build go and node.js in your docker. See Installation for notes on how to build your ubuntu on a live system.
+These instructions will get you to build golang in your docker. See Installation for notes on how to build your ubuntu on a live system.
 
 ### Installation
 1. Install [Docker](https://www.docker.com/).
@@ -18,15 +18,18 @@ docker run -itd --name web -p 8080:80 bananabb/ubuntu-go
 ```
 docker exec -it web /bin/bash
 ```
-Check Node.js version
+
+Check Go, PMGO & Dep
 ```
-nvm ls
-```
-Check Go
-```
-go --help
+go version
+pmgo list
 ```
 Now you can enjoy your coding in your container.
+
+### PMGO & Dep Usage
+Please visit as below:
+[PMGO](https://github.com/struCoder/pmgo)
+[Dep](https://github.com/golang/dep)
 
 ## License
 This project is licensed under the MIT License
