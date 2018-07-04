@@ -1,6 +1,9 @@
 FROM bananabb/ubuntu-base:base.2.0.0
 MAINTAINER BananaBb
 
+# Setup Profile
+COPY .bash_profile ~/.bash_profile
+
 # Install Go
 RUN sudo apt-get update \
  && sudo apt-get upgrade -y \
