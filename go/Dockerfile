@@ -12,8 +12,9 @@ RUN sudo apt-get update \
 
 # Set ENV + install DEP & PMGO
 ENV PATH $PATH:/usr/local/go/bin
+ENV GOPATH $GOPATH:/var/www
 RUN go version \
- && export GOPATH=/var/www/public \
+ && export GOPATH=/var/www \
  && go get github.com/struCoder/pmgo \
  && mv $GOPATH/bin/pmgo /usr/local/bin \
  && go get -u github.com/golang/dep/cmd/dep
