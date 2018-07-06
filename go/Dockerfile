@@ -15,7 +15,7 @@ ENV PATH $PATH:/usr/local/go/bin
 ENV GOPATH $GOPATH:/var/www/public
 RUN go version \
  && export GOPATH=/usr/local \
- && go get github.com/struCoder/pmgo
+ && go get github.com/struCoder/pmgo \
  && go get github.com/golang/dep/cmd/dep
 
 ENV DEPNOLOCK $DEPNOLOCK:1
