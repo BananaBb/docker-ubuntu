@@ -1,4 +1,4 @@
-FROM bananabb/ubuntu-base:base.2.0.0
+FROM bananabb/ubuntu-base:base.2.1.0
 MAINTAINER BananaBb
 
 # Install Node.js
@@ -14,8 +14,8 @@ ENV NVM_DIR $HOME/.nvm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash \ 
  && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \ 
  && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" \ 
- && nvm install 6.0.0 \ 
- && nvm alias default 6.0.0 \ 
+ && nvm install 8.11.3 \ 
+ && nvm alias default 8.11.3 \ 
  && nvm use default
 
 # Install pm2
