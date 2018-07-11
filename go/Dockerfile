@@ -1,4 +1,4 @@
-FROM bananabb/ubuntu-base:base.2.0.0
+FROM bananabb/ubuntu-base:base.2.1.0
 MAINTAINER BananaBb
 ENV GOLANG_VERSION 1.10.3
 
