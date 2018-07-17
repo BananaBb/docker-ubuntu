@@ -19,16 +19,14 @@ docker run -itd --name web -p 8080:80 bananabb/ubuntu-go
 docker exec -it web /bin/bash
 ```
 
-Check Go, PMGO & Dep
+Check Go
 ```
 go version
-pmgo list
 ```
 Now you can enjoy your coding in your container.
 
-### PMGO & Dep Usage
+### Dep Usage
 Please visit as below:
-[PMGO](https://github.com/struCoder/pmgo)
 
 [Dep](https://github.com/golang/dep)
 
