@@ -4,7 +4,7 @@ ENV GOLANG_VERSION 1.10.3
 
 # Install Go
 RUN sudo apt-get update -y \
- && mkdir -p /var/www/public \
+ && mkdir -p /var/src \
  && curl -O https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz \
  && tar -xvf go1.10.3.linux-amd64.tar.gz \
  && mv go /usr/local \
@@ -12,14 +12,13 @@ RUN sudo apt-get update -y \
 
 # Set ENV
 ENV PATH $PATH:/usr/local/go/bin
-ENV GOPATH $GOPATH:/var/www/public
-
+ENV GOPATH $GOPATH:/var
 RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
 ENV DEPNOLOCK $DEPNOLOCK:1
 
 # Create working Directory
-WORKDIR /var/www/public
+WORKDIR /var/src
 EXPOSE 80 443
 
 CMD ["/bin/bash"]
