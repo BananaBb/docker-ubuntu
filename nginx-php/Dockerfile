@@ -1,42 +1,37 @@
-FROM bananabb/ubuntu-base:base.2.0.0
+FROM bananabb/ubuntu-base:base.3.0.0
 MAINTAINER BananaBb
 
 # Install nginx & packages & php
 RUN sudo apt-get update \
- && sudo apt-get install -y \
-    nginx \ 
-    supervisor \ 
+ && sudo DEBIAN_FRONTEND=noninteractive apt-get -qq install -y \
+    nginx \
+    supervisor \
     cron \
-    libpcre3-dev \ 
-    python-software-properties \ 
+    libpcre3-dev \
     software-properties-common \
-    php-fpm \ 
-    php-mysql \ 
-    php-mcrypt \ 
-    php-gd \ 
-    php-memcached \ 
-    php-curl \ 
-    php-mbstring \ 
-    php-zip \ 
-    php-opcache \ 
-    php-xdebug \ 
-    php-pear \ 
-    php-dev \ 
-    php7.0-soap \ 
- && pecl install mongodb
+    php7.2-fpm \
+    php7.2-common \
+    php7.2-mbstring \
+    php7.2-xmlrpc \
+    php7.2-soap \
+    php7.2-gd \
+    php7.2-xml \
+    php7.2-intl \
+    php7.2-mysql \
+    php7.2-cli \
+    php7.2-zip \
+    php7.2-curl
 
 # Build Folder
 RUN mkdir -p /var/www/public \ 
-  /var/log/supervisor \ 
-  /etc/nginx \ 
-  /var/run/php-fpm \ 
+  /var/log/supervisor \
+  /etc/nginx \
+  /var/run/php/php7.2-fpm \
   /etc/php/conf.d
 
 # Setup File
 RUN sudo rm /etc/nginx/sites-available/default \
- && sudo cp /usr/share/nginx/html/index.html /var/www/public/ \
- && echo "extension=mongodb.so" >> /etc/php/7.0/fpm/php.ini \ 
- && echo "extension=mongodb.so" >> /etc/php/7.0/cli/php.ini
+ && sudo cp /usr/share/nginx/html/index.html /var/www/public/
 
 # File setting
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
