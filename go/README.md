@@ -1,6 +1,6 @@
 # ubuntu-go
 
-This repository contains Dockerfile is include go & dep
+This repository contains Dockerfile is include go
 
 ## Getting Started
 These instructions will get you to build golang in your docker. See Installation for notes on how to build your ubuntu on a live system.
@@ -20,13 +20,8 @@ docker exec -it web /bin/bash
 go version
 mkdir {folder}
 cd {folder}
-dep init
 ```
 Now you can enjoy your coding in your container.
-
-### Dep Usage
-Please visit as below:
-* [Dep](https://github.com/golang/dep)
 
 ## License
 This project is licensed under the MIT License
