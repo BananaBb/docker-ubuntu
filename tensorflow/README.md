@@ -15,11 +15,13 @@ These instructions will get you to build a tensorflow in your docker. See Instal
 ```
 docker run --runtime=nvidia -itd --name tensorflow -p 8888:8888 bananabb/ubuntu-tensorflow:tensorflow-gpu
 docker exec -it tensorflow /bin/bash
+pip list
 ```
 ### Usage for CPU
 ```
-docker run --runtime=nvidia -itd --name tensorflow -p 8888:8888 bananabb/ubuntu-tensorflow:tensorflow
+docker run -itd --name tensorflow -p 8888:8888 bananabb/ubuntu-tensorflow:tensorflow
 docker exec -it tensorflow /bin/bash
+pip list
 ```
 Now you can enjoy your coding in your container.
 

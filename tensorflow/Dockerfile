@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.11.0-gpu-py3
+FROM tensorflow/tensorflow:1.11.0-py3
 MAINTAINER BananaBb
 
 # Update apt & install base
@@ -17,6 +17,7 @@ RUN pip install nltk \
     hmmlearn \
     scipy \
     matplotlib \
+    torch==1.0.1 -f https://download.pytorch.org/whl/cpu/stable \
     ftfy==4.4.3 \
     networkx \
     seaborn \
@@ -27,7 +28,7 @@ RUN pip install nltk \
     xgboost \
     eli5 \
     snorkel-metal
-RUN pip3 install torch torchvision
+
 
 EXPOSE 8888
 
