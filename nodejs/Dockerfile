@@ -1,29 +1,34 @@
 FROM bananabb/ubuntu-base:base.2.1.0
 MAINTAINER BananaBb
 
-# Install Node.js
+#Install Node.js
 RUN sudo apt-get update \
  && sudo apt-get install -y \
   	nodejs \ 
   	npm  \
   	build-essential \ 
-  	libssl-dev
+  	libssl-dev \ 
+  	libmysqlclient-dev
 
-# Use `Node.js 6.0.0` by `NVM`(node.js version manager)
+# `NVM`(node.js version manager)
 ENV NVM_DIR $HOME/.nvm
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash \ 
- && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \ 
- && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" \ 
- && nvm install 8.11.3 \ 
- && nvm alias default 8.11.3 \ 
- && nvm use default
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.33.8/install.sh | bash \
+	&& [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \ 
+	&& [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" \  
+    && nvm install 10.16.0 \
+    && nvm alias default 10.16.0 \
+    && nvm use default
 
 # Install pm2
-RUN npm install pm2 -g
+RUN npm install -g \ 
+	pm2 \ 
+	sass
 
 # Create working DirectoryRUN /bin/bash -c "
-RUN mkdir -p /var/www/public
-WORKDIR /var/www/public
+RUN mkdir -p \ 
+	/var/www/public \ 
+	/var/www/src
+WORKDIR /var/www/src
 
 EXPOSE 80 443
 
