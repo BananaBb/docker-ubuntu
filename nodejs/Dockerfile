@@ -24,11 +24,14 @@ RUN npm install -g \
 	pm2 \ 
 	sass
 
+# Install frame tool
+RUN npm install express-generator -g \
+    npm install create-react-library -g
+
 # Create working DirectoryRUN /bin/bash -c "
 RUN mkdir -p \ 
-	/var/www/public \ 
-	/var/www/src
-WORKDIR /var/www/src
+	/var/www
+WORKDIR /var/www
 
 EXPOSE 80 443
 
