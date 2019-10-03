@@ -19,14 +19,12 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.33.8/install.sh | b
     && nvm alias default 10.16.0 \
     && nvm use default
 
-# Install pm2
+# Install library for Node.js
 RUN npm install -g \ 
 	pm2 \ 
-	sass
-
-# Install frame tool
-RUN npm install express-generator -g \
-    npm install create-react-library -g
+	sass \
+  express-generator \
+  create-react-library
 
 # Create working DirectoryRUN /bin/bash -c "
 RUN mkdir -p \ 
