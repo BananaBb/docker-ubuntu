@@ -18,11 +18,22 @@ docker run -itd --name web -p 8080:80 bananabb/ubuntu-nodejs
 ```
 docker exec -it web /bin/bash
 ```
-Check Node.js version
+
+### More
 ```
 nvm ls
+
+node -v
+v10.16.0
+
+npm --version
+6.9.0
+
+create-react-library@2.6.7
+
+express-generator@4.16.1
 ```
 Now you can enjoy your coding in your container.
 
 ## License
-This project is licensed under the MIT License
+MIT © [BananaBb](https://github.com/BananaBb)
